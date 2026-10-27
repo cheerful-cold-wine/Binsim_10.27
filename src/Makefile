@@ -1,11 +1,11 @@
-CXX       := g++
-CXXFLAGS  := -std=c++20 -march=znver4 -mtune=znver4 -O3 \
+CXX       := /home/lrc1/Software/anaconda3/envs/binsim/bin/g++
+CXXFLAGS  := -std=c++20 -march=native -mtune=native -O3 \
              -fopenmp -fPIC -shared \
              -fomit-frame-pointer -mpopcnt -mbmi2 \
              -fopenmp-simd -funsafe-math-optimizations -fassociative-math
 
-CUXX      := /usr/local/cuda-12.9/bin/nvcc
-CUXXFLAGS := -std=c++20 -arch=sm_120 -O3 --extended-lambda --expt-relaxed-constexpr \
+#CUXX      := /usr/local/cuda-12.9/bin/nvcc
+#CUXXFLAGS := -std=c++20 -arch=sm_120 -O3 --extended-lambda --expt-relaxed-constexpr \
              -Xcompiler -fPIC -shared --use_fast_math
 
 INC        := -I./include
@@ -21,7 +21,7 @@ DIAG_HDRS   := $(wildcard include/diag/*.hpp)
 # 编译命令模板
 CXX_LINK   = $(CXX) $(CXXFLAGS) $(INC) -o $@ $<
 CXX_ANKERL = $(CXX) $(CXXFLAGS) $(INC) $(ANKERL_INC) -o $@ $<
-CUDA_LINK  = $(CUXX) $(CUXXFLAGS) $(INC) $(ANKERL_INC) -o $@ $<
+#CUDA_LINK  = $(CUXX) $(CUXXFLAGS) $(INC) $(ANKERL_INC) -o $@ $<
 
 # ================================================================
 .PHONY: all clean
@@ -31,7 +31,7 @@ all: lib/libham.so \
 	 lib/libbasis.so \
 	 lib/libdiag.so \
      lib/libotf_native.so \
-     lib/libcuotf.so
+     #lib/libcuotf.so
 
 lib:
 	mkdir -p lib
