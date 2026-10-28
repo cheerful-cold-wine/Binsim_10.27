@@ -89,3 +89,12 @@ include("fci.jl")
 include("ansatz.jl")
 include("vqe.jl")
 include("vqrte.jl")
+
+# ---------------------------------------------------------------------------
+#   _load_data.jl  : molecule_from_geometry / 逐元素基组 / hforb 缓存
+#   _run_pyscf.jl  : PySCF 初始化（冻结芯、CISD/MP2/CCSD/FCI、hforb 初猜）
+#   _ansatz.jl     : 算符池符号去重、GSD 分类约化、叠层 idxs
+# ---------------------------------------------------------------------------
+include("_load_data.jl")
+include("_run_pyscf.jl")
+include("_ansatz.jl")

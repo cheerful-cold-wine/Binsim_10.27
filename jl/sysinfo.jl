@@ -11,6 +11,7 @@ mutable struct Mole <: SysInfo
     one_body_mo::Array{Float64,2}
     two_body_mo::Array{Float64,4}
     e_scale::Float64
+    hforb::Union{Nothing, Matrix{Float64}}
 end
 
 function Mole()
@@ -24,6 +25,7 @@ function Mole()
     one_body_mo = Array{Float64,2}(undef, 0, 0)
     two_body_mo = Array{Float64,4}(undef, 0, 0, 0, 0)
     e_scale     = 0.0
+    hforb       = nothing
 
     Mole(
         name,
@@ -36,6 +38,7 @@ function Mole()
         one_body_mo,
         two_body_mo,
         e_scale,
+        hforb,
     )
 end
 
